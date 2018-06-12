@@ -15,13 +15,13 @@ import java.util.List;
  * @WeChat zyfJava
  */
 @RestController
-@RequestMapping(value = "headstorm")
+//@RequestMapping(value = "headstorm")
 public class QuestionController {
     @Autowired
     QuestionsService questionsService;
     @RequestMapping(value = "question/get_rand")
     public List<QuestionsRes> getApiData() {
-        List<QuestionsRes> questionsRes = questionsService.findAll();
+        List<QuestionsRes> questionsRes = questionsService.randomQUestion(5);
 //        System.out.print(questionsRes);
         return questionsRes;
     }
