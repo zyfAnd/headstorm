@@ -8,6 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class HeadstormApplicationTests {
@@ -26,6 +31,22 @@ public class HeadstormApplicationTests {
 					"B","0","巴西世界杯","2002年日韩世界杯","意大利世界杯","德国世界杯");
 			questionsService.save(questionsRes);
 		}
+	}
+	@Test
+	public void readQuestion() throws IOException {
+		FileReader fileReader = new FileReader("/Users/yanfu/IdeaProjects/headstorm/question.txt");
+		BufferedReader reader = new BufferedReader(fileReader);
+		String line = "";
+		String[] arr = null;
+		while((line=reader.readLine())!=null){
+			if(line.length()>0) {
+				arr = line.split("\\?");
+				System.out.println(arr[1]);
+			}
+//
+//			System.out.println(line.substring(2,line.length()));
+		}
+
 	}
 
 }
